@@ -3,7 +3,8 @@ import authentications from "../collections/authentications/index.js"
 import { hashPassword, comparePassword } from "../uitilities/common.js"
 import logger from "../uitilities/logger/index.js"
 import jwt from "jsonwebtoken"
-const jwtSecret = "nodeJs-CRUD"
+import config from "../config/default.js"
+const jwtSecret = config.jwt.secret
 
 async function userList(query) {
     try {
@@ -56,7 +57,7 @@ async function login(body) {
         const user = await users.findOne({ email: body.email }).lean()
         if (user && await comparePassword(body.password, user.password) == true) {
             const token = jwt.sign({ userId: user._id }, jwtSecret, { expiresIn: 60 * 60 });
-            user['token'] = token
+            user["token"] = token
             const authentication = new authentications({ userId: user._id, authToken: token, expiresIn: 60 * 60 })
             await authentication.save()
             return user

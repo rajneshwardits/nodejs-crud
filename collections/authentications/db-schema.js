@@ -1,9 +1,9 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const authSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users',
+        ref: "users",
         required: true
     },
     authToken: {

@@ -1,4 +1,4 @@
-import * as userServices from '../services/users.js'
+import * as userServices from "../services/users.js"
 import { message, statusCode } from "../uitilities/constants.js"
 import { successAction, failAction } from "../uitilities/response.js"
 import logger from "../uitilities/logger/index.js"
@@ -6,7 +6,7 @@ import logger from "../uitilities/logger/index.js"
 async function userList(req, res) {
     try {
         const data = await userServices.userList(req.body)
-        res.status(statusCode.success).json(successAction(statusCode.success, data, message.fetch('User')))
+        res.status(statusCode.success).json(successAction(statusCode.success, data, message.fetch("User")))
     }
     catch (err) {
         logger.error(err)
@@ -17,7 +17,7 @@ async function userList(req, res) {
 async function userAdd(req, res) {
     try {
         const data = await userServices.userAdd(req.body)
-        res.status(statusCode.success).json(successAction(statusCode.success, data, message.add('User')))
+        res.status(statusCode.success).json(successAction(statusCode.success, data, message.add("User")))
     }
     catch (err) {
         logger.error(err)
@@ -28,7 +28,7 @@ async function userAdd(req, res) {
 async function userUpdate(req, res) {
     try {
         const data = await userServices.userUpdate(req.params, req.body)
-        res.status(statusCode.success).json(successAction(statusCode.success, data, message.update('User')))
+        res.status(statusCode.success).json(successAction(statusCode.success, data, message.update("User")))
     }
     catch (err) {
         logger.error(err)
@@ -39,7 +39,7 @@ async function userUpdate(req, res) {
 async function userDelete(req, res) {
     try {
         const data = await userServices.userDelete(req.params)
-        res.status(statusCode.success).json(successAction(statusCode.success, data, message.delete('User')))
+        res.status(statusCode.success).json(successAction(statusCode.success, data, message.delete("User")))
     }
     catch (err) {
         logger.error(err)

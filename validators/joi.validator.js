@@ -51,7 +51,7 @@ const validationMiddleware = async (req, res, next, schema) => {
     }
 
     if (error) {
-        res.status(400).json({ 'validationError': error.details[0].message })
+        res.status(400).json({ "validationError": error.details[0].message })
     } else {
         next()
     }

@@ -1,25 +1,25 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { createLogger, format, transports } from "winston"
-import DailyRotateFile from 'winston-daily-rotate-file';
+import DailyRotateFile from "winston-daily-rotate-file";
 import appRoot from "app-root-path"
-const logsPath = `${appRoot}/lib/logger/logs/`;
 import namespace from "continuation-local-storage"
-const loggerNamespace = namespace.getNamespace('logger');
+const loggerNamespace = namespace.getNamespace("logger");
+const logsPath = `${appRoot}/lib/logger/logs/`;
 
 const fileFormat = format.combine(
     format.timestamp(),
     format.align(),
     format.printf((info) => {
-        let log = '';
+        let log = "";
         try {
-            const logId = (loggerNamespace && loggerNamespace.get('logId')) ? loggerNamespace.get('logId') : uuidv4();
+            const logId = (loggerNamespace && loggerNamespace.get("logId")) ? loggerNamespace.get("logId") : uuidv4();
             const {
                 timestamp, level, message, ...args
             } = info;
-            const ts = timestamp.slice(0, 19).replace('T', ' ');
-            log = `${ts} - ${logId} - ${level}: ${message ? message.trim() : ''} ${Object.keys(args).length ? JSON.stringify(args, null, 2) : ''}`;
+            const ts = timestamp.slice(0, 19).replace("T", " ");
+            log = `${ts} - ${logId} - ${level}: ${message ? message.trim() : ""} ${Object.keys(args).length ? JSON.stringify(args, null, 2) : ""}`;
         } catch (error) {
-            console.log('Error @ fileFormat @ logger ', error);
+            console.log("Error @ fileFormat @ logger ", error);
         } finally {
             return log;
         }
@@ -27,11 +27,11 @@ const fileFormat = format.combine(
 );
 
 const info = createLogger({
-    level: 'info',
+    level: "info",
     format: fileFormat,
     transports: [
         new DailyRotateFile({
-            level: 'info',
+            level: "info",
             filename: `${logsPath}/info-%DATE%.log`,
             handleExceptions: true,
             json: true,
@@ -42,11 +42,11 @@ const info = createLogger({
 });
 
 const error = createLogger({
-    level: 'error',
+    level: "error",
     format: fileFormat,
     transports: [
         new DailyRotateFile({
-            level: 'error',
+            level: "error",
             filename: `${logsPath}/error-%DATE%.log`,
             handleExceptions: true,
             json: true,
@@ -61,23 +61,23 @@ const consoleFormat = format.combine(
     format.timestamp(),
     format.align(),
     format.printf((info) => {
-        let log = '';
+        let log = "";
         try {
-            const logId = (loggerNamespace && loggerNamespace.get('logId')) ? loggerNamespace.get('logId') : uuidv4();
+            const logId = (loggerNamespace && loggerNamespace.get("logId")) ? loggerNamespace.get("logId") : uuidv4();
             const {
                 timestamp, level, message, ...args
             } = info;
-            const ts = timestamp.slice(0, 19).replace('T', ' ');
-            log = `${ts} - ${logId} - ${level}: ${message ? message.trim() : ''} ${Object.keys(args).length ? JSON.stringify(args, null, 2) : ''}`;
+            const ts = timestamp.slice(0, 19).replace("T", " ");
+            log = `${ts} - ${logId} - ${level}: ${message ? message.trim() : ""} ${Object.keys(args).length ? JSON.stringify(args, null, 2) : ""}`;
         } catch (error) {
-            console.log('Error @ fileFormat @ logger ', error);
+            console.log("Error @ fileFormat @ logger ", error);
         } finally {
             return log;
         }
     })
 );
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== "production") {
     info.add(new transports.Console({
         format: consoleFormat
     }));

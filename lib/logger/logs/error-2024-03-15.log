@@ -1,27 +1,144 @@
-2024-03-15 10:39:50 - e3cc7e1e-4972-4d00-8223-b658cf78c3b9 - error: users validation failed: age: Path `age` is required. {
-  "errors": {
-    "age": {
-      "name": "ValidatorError",
-      "message": "Path `age` is required.",
-      "properties": {
-        "message": "Path `age` is required.",
-        "type": "required",
-        "path": "age"
-      },
-      "kind": "required",
-      "path": "age"
+2024-03-15 11:42:11 - 7dc43929-f807-4145-b51c-18735ad4a722 - error: uncaughtException: config.get is not a function
+TypeError: config.get is not a function
+    at file:///home/ditsdev299/Desktop/node/index.js:18:25
+    at ModuleJob.run (internal/modules/esm/module_job.js:152:23)
+    at async Loader.import (internal/modules/esm/loader.js:177:24)
+    at async Object.loadESM (internal/process/esm_loader.js:68:5) {
+  "error": {},
+  "stack": "TypeError: config.get is not a function\n    at file:///home/ditsdev299/Desktop/node/index.js:18:25\n    at ModuleJob.run (internal/modules/esm/module_job.js:152:23)\n    at async Loader.import (internal/modules/esm/loader.js:177:24)\n    at async Object.loadESM (internal/process/esm_loader.js:68:5)",
+  "exception": true,
+  "date": "Fri Mar 15 2024 17:12:11 GMT+0530 (India Standard Time)",
+  "process": {
+    "pid": 66853,
+    "uid": 1000,
+    "gid": 1000,
+    "cwd": "/home/ditsdev299/Desktop/node",
+    "execPath": "/home/ditsdev299/.nvm/versions/node/v14.17.0/bin/node",
+    "version": "v14.17.0",
+    "argv": [
+      "/home/ditsdev299/.nvm/versions/node/v14.17.0/bin/node",
+      "/home/ditsdev299/Desktop/node/index.js"
+    ],
+    "memoryUsage": {
+      "rss": 75890688,
+      "heapTotal": 53092352,
+      "heapUsed": 25367352,
+      "external": 20550695,
+      "arrayBuffers": 18699214
     }
   },
-  "_message": "users validation failed"
-}
-2024-03-15 10:46:18 - 7e48e7d9-9329-45d0-89a0-1393194b00e8 - error: E11000 duplicate key error collection: ditstek.users index: email_1 dup key: { email: "ravi1235@yopmail.com" } {
-  "index": 0,
-  "code": 11000,
-  "keyPattern": {
-    "email": 1
+  "os": {
+    "loadavg": [
+      0.92,
+      0.98,
+      0.94
+    ],
+    "uptime": 88821.36
   },
-  "keyValue": {
-    "email": "ravi1235@yopmail.com"
-  }
+  "trace": [
+    {
+      "column": 25,
+      "file": "file:///home/ditsdev299/Desktop/node/index.js",
+      "function": null,
+      "line": 18,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 23,
+      "file": "internal/modules/esm/module_job.js",
+      "function": "ModuleJob.run",
+      "line": 152,
+      "method": "run",
+      "native": false
+    },
+    {
+      "column": 24,
+      "file": "internal/modules/esm/loader.js",
+      "function": "async Loader.import",
+      "line": 177,
+      "method": "import",
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "internal/process/esm_loader.js",
+      "function": "async Object.loadESM",
+      "line": 68,
+      "method": "loadESM",
+      "native": false
+    }
+  ]
 }
-2024-03-15 10:46:18 - 13197a60-a828-4727-b51a-cb5f3c230407 - error: E11000 duplicate key error collection: ditstek.users index: email_1 dup key: { email: "ravi1235@yopmail.com" } 
+2024-03-15 12:02:23 - ea337a68-428c-430d-a6bf-b12a5325fe91 - error: uncaughtException: dbConfig is not defined
+ReferenceError: dbConfig is not defined
+    at file:///home/ditsdev299/Desktop/node/index.js:18:18
+    at ModuleJob.run (internal/modules/esm/module_job.js:152:23)
+    at async Loader.import (internal/modules/esm/loader.js:177:24)
+    at async Object.loadESM (internal/process/esm_loader.js:68:5) {
+  "error": {},
+  "stack": "ReferenceError: dbConfig is not defined\n    at file:///home/ditsdev299/Desktop/node/index.js:18:18\n    at ModuleJob.run (internal/modules/esm/module_job.js:152:23)\n    at async Loader.import (internal/modules/esm/loader.js:177:24)\n    at async Object.loadESM (internal/process/esm_loader.js:68:5)",
+  "exception": true,
+  "date": "Fri Mar 15 2024 17:32:23 GMT+0530 (India Standard Time)",
+  "process": {
+    "pid": 68289,
+    "uid": 1000,
+    "gid": 1000,
+    "cwd": "/home/ditsdev299/Desktop/node",
+    "execPath": "/home/ditsdev299/.nvm/versions/node/v14.17.0/bin/node",
+    "version": "v14.17.0",
+    "argv": [
+      "/home/ditsdev299/.nvm/versions/node/v14.17.0/bin/node",
+      "/home/ditsdev299/Desktop/node/index.js"
+    ],
+    "memoryUsage": {
+      "rss": 75751424,
+      "heapTotal": 53354496,
+      "heapUsed": 25337464,
+      "external": 20550695,
+      "arrayBuffers": 18699214
+    }
+  },
+  "os": {
+    "loadavg": [
+      0.89,
+      0.92,
+      0.91
+    ],
+    "uptime": 90033.61
+  },
+  "trace": [
+    {
+      "column": 18,
+      "file": "file:///home/ditsdev299/Desktop/node/index.js",
+      "function": null,
+      "line": 18,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 23,
+      "file": "internal/modules/esm/module_job.js",
+      "function": "ModuleJob.run",
+      "line": 152,
+      "method": "run",
+      "native": false
+    },
+    {
+      "column": 24,
+      "file": "internal/modules/esm/loader.js",
+      "function": "async Loader.import",
+      "line": 177,
+      "method": "import",
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "internal/process/esm_loader.js",
+      "function": "async Object.loadESM",
+      "line": 68,
+      "method": "loadESM",
+      "native": false
+    }
+  ]
+}

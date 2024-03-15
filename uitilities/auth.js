@@ -3,8 +3,8 @@ import authentications from "../collections/authentications/index.js"
 import users from "../collections/users/index.js"
 import { message, statusCode } from "../uitilities/constants.js"
 import { failAction } from "../uitilities/response.js"
-
-const jwtSecret = "nodeJs-CRUD"
+import config from "../config/default.js"
+const jwtSecret = config.jwt.secret
 
 async function checkAuthToken(req, res, next) {
     if (req.headers.authorization) {

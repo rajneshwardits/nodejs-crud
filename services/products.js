@@ -1,4 +1,5 @@
 import products from "../collections/products/index.js"
+import logger from "../uitilities/logger/index.js"
 
 async function productList(query) {
     try {
@@ -9,7 +10,7 @@ async function productList(query) {
         return await products.find({}).skip(startIndex).limit(limit).sort(sort);
     }
     catch (err) {
-        console.log("Products services err => ", err)
+      logger.error(err)
         throw new Error(err.message)
     }
 }
@@ -20,7 +21,7 @@ async function productAdd(body) {
         return await newProduct.save()
     }
     catch (err) {
-        console.log("Products services err => ", err)
+      logger.error(err)
         throw new Error(err.message)
     }
 }
@@ -30,7 +31,7 @@ async function productUpdate(params, body) {
         return await products.updateOne({ _id: params.id }, { $set: body })
     }
     catch (err) {
-        console.log("Products services err => ", err)
+      logger.error(err)
         throw new Error(err.message)
     }
 }
@@ -40,7 +41,7 @@ async function productDelete(params) {
         return await products.deleteOne({ _id: params.id })
     }
     catch (err) {
-        console.log("Products services err => ", err)
+      logger.error(err)
         throw new Error(err.message)
     }
 }

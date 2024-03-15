@@ -1,6 +1,7 @@
 import * as productServices from '../services/products.js'
 import { message, statusCode } from "../uitilities/constants.js"
 import { successAction, failAction } from "../uitilities/response.js"
+import logger from "../uitilities/logger/index.js"
 
 async function productList(req, res) {
     try {
@@ -8,6 +9,7 @@ async function productList(req, res) {
         res.status(statusCode.success).json(successAction(statusCode.success, data, message.fetch('Product')))
     }
     catch (err) {
+        logger.error(err)
         res.status(statusCode.badRequest).json(failAction(statusCode.badRequest, err.message, message.somethingWrong))
     }
 }
@@ -18,6 +20,7 @@ async function productAdd(req, res) {
         res.status(statusCode.success).json(successAction(statusCode.success, data, message.add('Product')))
     }
     catch (err) {
+        logger.error(err)
         res.status(statusCode.badRequest).json(failAction(statusCode.badRequest, err.message, message.somethingWrong))
     }
 }
@@ -28,6 +31,7 @@ async function productUpdate(req, res) {
         res.status(statusCode.success).json(successAction(statusCode.success, data, message.update('Product')))
     }
     catch (err) {
+        logger.error(err)
         res.status(statusCode.badRequest).json(failAction(statusCode.badRequest, err.message, message.somethingWrong))
     }
 }
@@ -38,6 +42,7 @@ async function productDelete(req, res) {
         res.status(statusCode.success).json(successAction(statusCode.success, data, message.delete('Product')))
     }
     catch (err) {
+        logger.error(err)
         res.status(statusCode.badRequest).json(failAction(statusCode.badRequest, err.message, message.somethingWrong))
     }
 }

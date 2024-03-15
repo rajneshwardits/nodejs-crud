@@ -1,6 +1,7 @@
 import * as userServices from '../services/users.js'
 import { message, statusCode } from "../uitilities/constants.js"
 import { successAction, failAction } from "../uitilities/response.js"
+import logger from "../uitilities/logger/index.js"
 
 async function userList(req, res) {
     try {
@@ -8,6 +9,7 @@ async function userList(req, res) {
         res.status(statusCode.success).json(successAction(statusCode.success, data, message.fetch('User')))
     }
     catch (err) {
+        logger.error(err)
         res.status(statusCode.badRequest).json(failAction(statusCode.badRequest, err.message, message.somethingWrong))
     }
 }
@@ -18,6 +20,7 @@ async function userAdd(req, res) {
         res.status(statusCode.success).json(successAction(statusCode.success, data, message.add('User')))
     }
     catch (err) {
+        logger.error(err)
         res.status(statusCode.badRequest).json(failAction(statusCode.badRequest, err.message, message.somethingWrong))
     }
 }
@@ -28,6 +31,7 @@ async function userUpdate(req, res) {
         res.status(statusCode.success).json(successAction(statusCode.success, data, message.update('User')))
     }
     catch (err) {
+        logger.error(err)
         res.status(statusCode.badRequest).json(failAction(statusCode.badRequest, err.message, message.somethingWrong))
     }
 }
@@ -38,6 +42,7 @@ async function userDelete(req, res) {
         res.status(statusCode.success).json(successAction(statusCode.success, data, message.delete('User')))
     }
     catch (err) {
+        logger.error(err)
         res.status(statusCode.badRequest).json(failAction(statusCode.badRequest, err.message, message.somethingWrong))
     }
 }
@@ -52,6 +57,7 @@ async function login(req, res) {
         }
     }
     catch (err) {
+        logger.error(err)
         res.status(statusCode.badRequest).json(failAction(statusCode.badRequest, err.message, message.somethingWrong))
     }
 }

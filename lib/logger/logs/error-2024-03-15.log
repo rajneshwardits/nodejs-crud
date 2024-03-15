@@ -1,0 +1,27 @@
+2024-03-15 10:39:50 - e3cc7e1e-4972-4d00-8223-b658cf78c3b9 - error: users validation failed: age: Path `age` is required. {
+  "errors": {
+    "age": {
+      "name": "ValidatorError",
+      "message": "Path `age` is required.",
+      "properties": {
+        "message": "Path `age` is required.",
+        "type": "required",
+        "path": "age"
+      },
+      "kind": "required",
+      "path": "age"
+    }
+  },
+  "_message": "users validation failed"
+}
+2024-03-15 10:46:18 - 7e48e7d9-9329-45d0-89a0-1393194b00e8 - error: E11000 duplicate key error collection: ditstek.users index: email_1 dup key: { email: "ravi1235@yopmail.com" } {
+  "index": 0,
+  "code": 11000,
+  "keyPattern": {
+    "email": 1
+  },
+  "keyValue": {
+    "email": "ravi1235@yopmail.com"
+  }
+}
+2024-03-15 10:46:18 - 13197a60-a828-4727-b51a-cb5f3c230407 - error: E11000 duplicate key error collection: ditstek.users index: email_1 dup key: { email: "ravi1235@yopmail.com" } 

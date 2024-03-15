@@ -1,11 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
-import namespace from 'continuation-local-storage'
-
-const namespace = require().getNamespace('logger');
-const { createLogger, format, transports } = require('winston');
-const DailyRotateFile = require('winston-daily-rotate-file');
-const appRoot = require('app-root-path');
+import { createLogger, format, transports } from "winston"
+import DailyRotateFile from 'winston-daily-rotate-file';
+import appRoot from "app-root-path"
 const logsPath = `${appRoot}/lib/logger/logs/`;
+import namespace from "continuation-local-storage"
+const loggerNamespace = namespace.getNamespace('logger');
 
 const fileFormat = format.combine(
     format.timestamp(),
@@ -13,7 +12,7 @@ const fileFormat = format.combine(
     format.printf((info) => {
         let log = '';
         try {
-            const logId = (namespace && namespace.get('logId')) ? namespace.get('logId') : uuidv4();
+            const logId = (loggerNamespace && loggerNamespace.get('logId')) ? loggerNamespace.get('logId') : uuidv4();
             const {
                 timestamp, level, message, ...args
             } = info;
@@ -64,7 +63,7 @@ const consoleFormat = format.combine(
     format.printf((info) => {
         let log = '';
         try {
-            const logId = (namespace && namespace.get('logId')) ? namespace.get('logId') : uuidv4();
+            const logId = (loggerNamespace && loggerNamespace.get('logId')) ? loggerNamespace.get('logId') : uuidv4();
             const {
                 timestamp, level, message, ...args
             } = info;

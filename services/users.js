@@ -1,6 +1,7 @@
 import users from "../collections/users/index.js"
 import authentications from "../collections/authentications/index.js"
 import { hashPassword, comparePassword } from "../uitilities/common.js"
+import logger from "../uitilities/logger/index.js"
 import jwt from "jsonwebtoken"
 const jwtSecret = "nodeJs-CRUD"
 
@@ -13,7 +14,7 @@ async function userList(query) {
         return await users.find({}).skip(startIndex).limit(limit).sort(sort);
     }
     catch (err) {
-        console.log("Users services err => ", err)
+        logger.error(err)
         throw new Error(err.message)
     }
 }
@@ -21,11 +22,11 @@ async function userList(query) {
 async function userAdd(body) {
     try {
         const password = await hashPassword(body.password)
-        const newUser = new users({ name: body.name, age: body.age, email: body.email, password })
+        const newUser = new users({ name: body.name, age:body.age, email: body.email, password })
         return await newUser.save()
     }
     catch (err) {
-        console.log("Users services err => ", err)
+        logger.error(err)
         throw new Error(err.message)
     }
 }
@@ -35,7 +36,7 @@ async function userUpdate(params, body) {
         return await users.updateOne({ _id: params.id }, { $set: body })
     }
     catch (err) {
-        console.log("Users services err => ", err)
+        logger.error(err)
         throw new Error(err.message)
     }
 }
@@ -45,7 +46,7 @@ async function userDelete(params) {
         return await users.deleteOne({ _id: params.id })
     }
     catch (err) {
-        console.log("Users services err => ", err)
+        logger.error(err)
         throw new Error(err.message)
     }
 }
@@ -64,7 +65,7 @@ async function login(body) {
         }
     }
     catch (err) {
-        console.log("Users services err => ", err)
+        logger.error(err)
         throw new Error(err.message)
     }
 }

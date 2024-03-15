@@ -1,11 +1,16 @@
-import products from "../models/products.js"
+import products from "../collections/products/index.js"
 
-async function productList(body) {
+async function productList(query) {
     try {
-        return await products.find({})
+        const sort = {}
+        sort[query.sortBy] = parseInt(query.sort)
+        const startIndex = (parseInt(query.page) - 1) * parseInt(query.limit);
+        const limit = parseInt(query.limit)
+        return await products.find({}).skip(startIndex).limit(limit).sort(sort);
     }
     catch (err) {
-        console.log(err)
+        console.log("Products services err => ", err)
+        throw new Error(err.message)
     }
 }
 
@@ -15,25 +20,28 @@ async function productAdd(body) {
         return await newProduct.save()
     }
     catch (err) {
-        console.log(err)
+        console.log("Products services err => ", err)
+        throw new Error(err.message)
     }
 }
 
 async function productUpdate(params, body) {
     try {
-        return await products.updateOne({_id:params.id},{$set:body})
+        return await products.updateOne({ _id: params.id }, { $set: body })
     }
     catch (err) {
-        console.log(err)
+        console.log("Products services err => ", err)
+        throw new Error(err.message)
     }
 }
 
 async function productDelete(params) {
     try {
-        return await products.deleteOne({_id:params.id})
+        return await products.deleteOne({ _id: params.id })
     }
     catch (err) {
-        console.log(err)
+        console.log("Products services err => ", err)
+        throw new Error(err.message)
     }
 }
 

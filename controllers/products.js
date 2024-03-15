@@ -1,42 +1,44 @@
 import * as productServices from '../services/products.js'
+import { message, statusCode } from "../uitilities/constants.js"
+import { successAction, failAction } from "../uitilities/response.js"
 
 async function productList(req, res) {
     try {
-        const data = await productServices.productList(req.body)
-        res.send({ status: 200, data, message: "Get products list successfully." })
+        const data = await productServices.productList(req.query)
+        res.status(statusCode.success).json(successAction(statusCode.success, data, message.fetch('Product')))
     }
     catch (err) {
-        console.log(err)
+        res.status(statusCode.badRequest).json(failAction(statusCode.badRequest, err.message, message.somethingWrong))
     }
 }
 
 async function productAdd(req, res) {
     try {
         const data = await productServices.productAdd(req.body)
-        res.send({ status: 200, data, message: "Product added successfully." })
+        res.status(statusCode.success).json(successAction(statusCode.success, data, message.add('Product')))
     }
     catch (err) {
-        console.log(err)
+        res.status(statusCode.badRequest).json(failAction(statusCode.badRequest, err.message, message.somethingWrong))
     }
 }
 
 async function productUpdate(req, res) {
     try {
         const data = await productServices.productUpdate(req.params, req.body)
-        res.send({ status: 200, data, message: "Product update successfully." })
+        res.status(statusCode.success).json(successAction(statusCode.success, data, message.update('Product')))
     }
     catch (err) {
-        console.log(err)
+        res.status(statusCode.badRequest).json(failAction(statusCode.badRequest, err.message, message.somethingWrong))
     }
 }
 
 async function productDelete(req, res) {
     try {
         const data = await productServices.productDelete(req.params)
-        res.send({ status: 200, data, message: "Products deleted successfully." })
+        res.status(statusCode.success).json(successAction(statusCode.success, data, message.delete('Product')))
     }
     catch (err) {
-        console.log(err)
+        res.status(statusCode.badRequest).json(failAction(statusCode.badRequest, err.message, message.somethingWrong))
     }
 }
 

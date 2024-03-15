@@ -1,8 +1,9 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-import router from "./routes/products.js"
 import mongoose from 'mongoose';
 import cors from "cors"
+import productRouter from "./routes/products.js"
+import userRouter from "./routes/users.js"
 
 const app = express()
 const port = 3000
@@ -10,7 +11,9 @@ const port = 3000
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(router)
+app.use("/v1/product", productRouter)
+app.use("/v1/user", userRouter)
+
 
 mongoose.connect('mongodb://127.0.0.1:27017/ditstek', {
   useNewUrlParser: true,
@@ -19,7 +22,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/ditstek', {
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback() {
-  console.log("Mongo DB connecting successfully.");
+  console.log("MongoDB connected successfully.");
 });
 
 app.listen(port, () => {

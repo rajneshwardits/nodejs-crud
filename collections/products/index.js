@@ -1,5 +1,5 @@
-import mongoose from "mongoose"; 
-import dbSchema from "./db-schema.js";
+import mongoose from 'mongoose'
+import dbSchema from './db-schema.js'
 
 // class ProductClass {
 //     static saveProduct(payload) {
@@ -17,5 +17,5 @@ import dbSchema from "./db-schema.js";
 //     }
 // }
 // dbSchema.loadClass(ProductClass);
-const products = mongoose.model("products", dbSchema);
+const products = mongoose.model('products', dbSchema)
 export default products

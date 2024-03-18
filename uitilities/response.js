@@ -4,10 +4,10 @@
  * @author: Rajneshwar Singh
  */
 
-export const successAction = (statusCode, data, message = "Success") => {
-    return { statusCode, data, message }
+export const successAction = (statusCode, data, message = 'Success') => {
+  return { statusCode, data, message }
 }
 
-export const failAction = (statusCode, errorMessage, message = "Fail") => {
-    return { statusCode, errorMessage, message }
+export const failAction = (statusCode, errorMessage, message = 'Fail') => {
+  return { statusCode, errorMessage, message }
 }

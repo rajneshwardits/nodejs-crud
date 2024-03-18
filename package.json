@@ -8,7 +8,8 @@
     "staging": "NODE_ENV=staging pm2 start dist/index.js",
     "build": "rm -rf dist && babel . -d dist --ignore node_modules && cp package.json dist",
     "serve": "nodemon dist/index.js",
-    "reinstall": "rm -rf dist && rm -rf node_modules && rm -rf lib && npm install"
+    "reinstall": "rm -rf dist && rm -rf node_modules && rm -rf lib && npm install",
+    "format": "prettier --write ."
   },
   "author": "Rajneshwar Singh",
   "license": "ISC",
@@ -39,6 +40,7 @@
     "@babel/node": "^7.23.9",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.24.0",
-    "eslint": "^8.57.0"
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5"
   }
 }

@@ -6,7 +6,6 @@
 
 export const successAction = (statusCode, data, message = "Success") => {
     return { statusCode, data, message }
-
 }
 
 export const failAction = (statusCode, errorMessage, message = "Fail") => {

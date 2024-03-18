@@ -2,6 +2,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose';
 import cors from "cors"
+import helmet from "helmet";
 import productRouter from "./routes/products.js"
 import userRouter from "./routes/users.js"
 import config from "./config/default.js"
@@ -13,8 +14,11 @@ const port = 3000
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(helmet());
+
 app.use("/v1/product", productRouter)
 app.use("/v1/user", userRouter)
+
 
 mongoose.connect(dbString, {
   useNewUrlParser: true,

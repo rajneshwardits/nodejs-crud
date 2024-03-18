@@ -1,10 +1,20 @@
+/*
+ * @file: common.js
+ * @description: It contain auth functions.
+ * @author: Rajneshwar Singh
+ */
+
 import jwt from "jsonwebtoken"
 import authentications from "../collections/authentications/index.js"
 import users from "../collections/users/index.js"
 import { message, statusCode } from "../uitilities/constants.js"
 import { failAction } from "../uitilities/response.js"
+
+/* Environment */
+import "dotenv/config"
 import config from "../config/default.js"
-const jwtSecret = config.jwt.secret
+const env = config[process.env.NODE_ENV || "staging"]
+const jwtSecret = env.jwt.secret
 
 async function checkAuthToken(req, res, next) {
     if (req.headers.authorization) {

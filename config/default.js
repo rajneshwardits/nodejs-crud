@@ -1,9 +1,20 @@
 export default {
-    "dbConfig": {
-        "uri": "mongodb://127.0.0.1:27017/ditstek"
+    development: {
+        "port": process.env.PORTDEV,
+        "dbConfig": {
+            "uri": process.env.DB_URI
+        },
+        "jwt": {
+            "secret": process.env.JWT_SECRET
+        }
     },
-    "jwt":{
-        "secret": "nodeJs-CRUD"
+    staging: {
+        "port": process.env.PORT,
+        "dbConfig": {
+            "uri": process.env.DB_URI
+        },
+        "jwt": {
+            "secret": process.env.JWT_SECRET
+        }
     }
-
 }

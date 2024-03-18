@@ -11,6 +11,5 @@ router.delete("/:id", user.userDelete)
 
 router.post("/login",(req, res, next) => validationMiddleware(req, res, next, "login"), user.login)
 
-
 export default router
 

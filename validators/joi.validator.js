@@ -1,6 +1,12 @@
-// Object schema validation
+/*
+ * @file: validators/joi.validator.js
+ * @description: It contain validation function on request body, params and query.
+ * @author: Rajneshwar Singh
+ */
+
 import joi from "joi"
 
+// Object schema validation
 const listing = joi.object({
     limit: joi.number().required(),
     page: joi.number().required(),
@@ -47,7 +53,7 @@ const validationMiddleware = async (req, res, next, schema) => {
     }
     
     if(schema == "login"){
-        var { error } = user.validate(req.body, option)
+        var { error } = login.validate(req.body, option)
     }
 
     if (error) {

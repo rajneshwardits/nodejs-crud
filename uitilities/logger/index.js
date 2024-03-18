@@ -1,3 +1,9 @@
+/*
+ * @file: logger/index.js
+ * @description: It contain error and info log functions.
+ * @author: Rajneshwar Singh
+ */
+
 import { v4 as uuidv4 } from "uuid";
 import { createLogger, format, transports } from "winston"
 import DailyRotateFile from "winston-daily-rotate-file";

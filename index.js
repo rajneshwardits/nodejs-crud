@@ -1,35 +1,43 @@
-import express from 'express'
-import bodyParser from 'body-parser'
-import mongoose from 'mongoose';
+import express from "express"
+import bodyParser from "body-parser"
+import mongoose from "mongoose";
 import cors from "cors"
+import path from "path"
 import helmet from "helmet";
+const __dirname = path.dirname("");
+
+/* Environment */
+import "dotenv/config"
+import config from "./config/default.js"
+const env = config[process.env.NODE_ENV || "staging"]
+
 import productRouter from "./routes/products.js"
 import userRouter from "./routes/users.js"
-import config from "./config/default.js"
-const dbString = config.dbConfig.uri
 
 const app = express()
-const port = 3000
-
+app.use(express.static(path.join(__dirname, "public")));
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(helmet());
 
+/* Routes */
 app.use("/v1/product", productRouter)
 app.use("/v1/user", userRouter)
 
-
-mongoose.connect(dbString, {
+/* Mongo connection */
+mongoose.connect(env.dbConfig.uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
 const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback() {
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function callback() {
   console.log("MongoDB connected successfully.");
 });
 
-app.listen(port, () => {
-  console.log(`Server listening ${port}`)
+
+/* Server Listening on 3000 port */
+app.listen(env.port, () => {
+  console.log(`Server listening ${env.port}`)
 })

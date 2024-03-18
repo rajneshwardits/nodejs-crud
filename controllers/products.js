@@ -47,8 +47,6 @@ async function productDelete(req, res) {
     }
 }
 
-
-
 export {
     productList, productAdd, productUpdate, productDelete
 }

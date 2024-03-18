@@ -3,8 +3,12 @@ import authentications from "../collections/authentications/index.js"
 import { hashPassword, comparePassword } from "../uitilities/common.js"
 import logger from "../uitilities/logger/index.js"
 import jwt from "jsonwebtoken"
+
+/* Environment */
 import config from "../config/default.js"
-const jwtSecret = config.jwt.secret
+const env = config[process.env.NODE_ENV || "staging"]
+
+const jwtSecret =env.jwt.secret
 
 async function userList(query) {
     try {
@@ -23,7 +27,7 @@ async function userList(query) {
 async function userAdd(body) {
     try {
         const password = await hashPassword(body.password)
-        const newUser = new users({ name: body.name, age:body.age, email: body.email, password })
+        const newUser = new users({ name: body.name, age: body.age, email: body.email, password })
         return await newUser.save()
     }
     catch (err) {

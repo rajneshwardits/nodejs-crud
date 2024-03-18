@@ -16,6 +16,7 @@ The following topics covered in this unit:
   * Helmet
   * Eslint
   * Bable-node
+  * Multi environment config
 
 
 - - -

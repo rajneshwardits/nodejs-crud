@@ -1,3 +1,9 @@
+/*
+ * @file: constants.js
+ * @description: It contain constants.
+ * @author: Rajneshwar Singh
+ */
+
 export const message = {
     "somethingWrong": "Something went wrong",
     "tokenRequried": "Auth token is requried.",

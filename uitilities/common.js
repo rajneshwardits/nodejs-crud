@@ -1,3 +1,9 @@
+/*
+ * @file: common.js
+ * @description: It contain common functions.
+ * @author: Rajneshwar Singh
+ */
+
 import bcrypt from "bcrypt"
 const saltRounds = 10;
 

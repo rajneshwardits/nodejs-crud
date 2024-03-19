@@ -4,16 +4,15 @@
   "description": "nodejs-CRUD is the sample CRUD project in node.js with MongoDB",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development nodemon index.js",
+    "start": "NODE_ENV=development nodemon --exec babel-node -- index.js",
     "staging": "NODE_ENV=staging pm2 start dist/index.js",
+    "serve": "NODE_ENV=staging nodemon --exec babel-node -- dist/index.js",
     "build": "rm -rf dist && babel . -d dist --ignore node_modules && cp package.json dist",
-    "serve": "nodemon dist/index.js",
-    "reinstall": "rm -rf dist && rm -rf node_modules && rm -rf lib && npm install",
+    "ri": "rm -rf dist && rm -rf node_modules && rm -rf lib && npm install",
     "format": "prettier --write ."
   },
   "author": "Rajneshwar Singh",
   "license": "ISC",
-  "type": "module",
   "dependencies": {
     "app-root-path": "^3.1.0",
     "bcrypt": "^5.1.1",

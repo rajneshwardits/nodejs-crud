@@ -10,7 +10,8 @@
 The following topics covered in this unit:
 
 - User and Product CRUD with MongoDB
-- User Login
+- User SignUp and Login
+- Request method like Get, Post, Put, Delete
 - JWT authorization and authentication
 - Joi validation
 - Winston error and info loggers

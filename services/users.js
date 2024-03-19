@@ -23,7 +23,7 @@ async function userList(query) {
   }
 }
 
-async function userAdd(body) {
+async function signup(body) {
   try {
     const password = await hashPassword(body.password)
     const newUser = new users({
@@ -73,7 +73,7 @@ async function login(body) {
       await authentication.save()
       return user
     } else {
-      return {}
+      return "notExist"
     }
   } catch (err) {
     logger.error(err)
@@ -81,4 +81,4 @@ async function login(body) {
   }
 }
 
-export { userList, userAdd, userUpdate, userDelete, login }
+export { userList, signup, userUpdate, userDelete, login }

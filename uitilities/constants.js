@@ -23,9 +23,9 @@ export const message = {
   delete: (labal) => {
     return `${labal} deleted successfully.`
   },
-  notExist: (labal)=>{
+  notExist: (labal) => {
     return `${lable} not exist`
-  }
+  },
 }
 
 export const statusCode = {

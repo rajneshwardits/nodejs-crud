@@ -73,7 +73,7 @@ async function login(body) {
       await authentication.save()
       return user
     } else {
-      return "notExist"
+      return 'notExist'
     }
   } catch (err) {
     logger.error(err)

@@ -46,9 +46,9 @@ async function userDelete(req, res) {
 async function login(req, res) {
   try {
     const data = await userServices.login(req.body)
-    if(data == "notExist"){
-      res.status(statusCode.wrongPassword).json(successAction(statusCode.wrongPassword, data, message.notExist("User")))
-    }else if (Object.keys(data).length === 0) {
+    if (data == 'notExist') {
+      res.status(statusCode.wrongPassword).json(successAction(statusCode.wrongPassword, data, message.notExist('User')))
+    } else if (Object.keys(data).length === 0) {
       res.status(statusCode.wrongPassword).json(successAction(statusCode.wrongPassword, data, message.invalidlogin))
     } else {
       res.status(statusCode.success).json(successAction(statusCode.success, data, message.login))

@@ -17,9 +17,9 @@ import userRouter from './routes/users.js'
 const app = express()
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(cors())
+app.use(helmet())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(helmet())
 
 /* Routes */
 app.use('/v1/product', productRouter)
